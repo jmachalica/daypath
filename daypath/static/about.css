@@ -1,0 +1,43 @@
+/* ABOUT PAGE */
+
+.about-container {
+    background-color: white;
+    width: 100%;
+    font-size: 85%;
+    padding: 50px 20px;
+    line-height: 145%;
+    letter-spacing: 110%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .about-text-container{
+  width: 45%;
+  text-align: justify;
+  }
+  
+
+  .about-header {
+    font-weight: bold;
+    font-size: 130%;
+  }
+
+  .about-main-header {
+
+  margin-bottom: 70px;
+  font-size: 170%;
+
+  }
+  
+  
+  .about-header-container {
+    margin-top: 50px;
+  }
+  
+  .about-paragraph {
+    color: #484343;
+    margin-top: 20px;
+  }
+  

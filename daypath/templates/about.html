@@ -1,0 +1,47 @@
+{%extends "layout.html"%}
+{%block head%}
+<link rel="stylesheet" href="{{url_for('static',filename='about.css')}}">
+{%endblock%}
+
+{%block content%}
+
+
+<!-- about page -->
+<main>
+<div class="about-container">
+    <div class="about-text-container">
+    <h1 class="about-main-header about-header">DayPath - plan your day</h1>
+  
+    <div class="about-header-container">
+      <h2 class="about-header">What is DayPath?</h2>
+      <p class="about-paragraph">
+        DayPath is an online day planner, which enables you to keep track of
+        your tasks and take advantage of Pomodoro Technique by using PomoTimer. Sign up to save
+        your DayPath and organise your tasks on every device, whereever you
+        are.
+      </p>
+    </div>
+  
+    <div class="about-header-container">
+      <h2 class="about-header">How to use the DayPath?</h2>
+      <p class="about-paragraph">
+        Simply enter tasks, which you want to accomplish today and move them
+        to the next stages. Switch to PomoTimer, to use built-in timer.
+      </p>
+    </div>
+  
+    <div class="about-header-container">
+      <h2 class="about-header">How does Pomodoro Technique work?</h2>
+      <p class="about-paragraph">
+        The Pomodoro Technique is a time management method, created by Francesco Cirillo for a more
+        productive way to work and study. The technique uses a timer to
+        break down work into intervals, traditionally 25 minutes in length,
+        separated by short breaks. Each interval is known as a pomodoro,
+        from the Italian word for 'tomato', after the tomato-shaped kitchen
+        timer that Cirillo used as a university student.
+      </p>
+    </div>
+  
+  </div>
+</main>
+{%endblock content%}

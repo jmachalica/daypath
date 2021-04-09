@@ -1,0 +1,170 @@
+{%extends "layout.html" %}
+{%block head%}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='home.css')}}">
+{%endblock head%}
+{%block content%}
+
+{%if current_user.is_authenticated%} 
+
+  <main class="main-container">
+    <!-- Container of tasks columns -->
+  <div class="main-content">
+    <div class="tasks-containers">
+      <!-- TODO container -->
+      <div
+        class="task-container task-container-todo"
+        ondrop="drop_handler(event)"
+        ondragover="dragover_handler(event)"
+      >
+      
+        <h2 class="task-container-header">TO Do</h2>
+  
+        <div class="task-container-tasks-container">
+
+          <!-- task box -->
+          {%if todo_tasks%}
+          <div class="only-tasks-container">
+
+            {%for task in todo_tasks%}
+            <div
+              class="task__box task_todo"
+              id="{{task.id}}"
+              draggable="true"
+              ondragstart="dragstart_handler(event)"
+            >
+            <input class="task__name"  value="{{task.task_content}}" type="text">
+            <button class='update-input-btn task-btn' ><span><span>&#10003;</span></span></button>
+
+              <button class="task-delete-btn task-btn">&#10005;</button>
+            </div>
+
+        {%endfor%}
+
+          </div>
+         
+          {%endif%}
+          <!-- Input to add new task -->
+          <div class='add-container task_todo task__box'>
+            
+            <input
+            type="text"
+            class="add-input task_todo"
+            id="todo"
+            placeholder="Add..."
+          />
+          <button class='add-input-btn task-btn' id='add_todo_btn'><span><span>&#10003;</span></span></button>
+  
+          </div>
+         
+        </div>
+      </div>
+  
+      <!-- DOING container -->
+      <div
+        class="task-container task-container-doing"
+        ondrop="drop_handler(event)"
+        ondragover="dragover_handler(event)"
+      >
+        <h2 class="task-container-header">In progress</h2>
+  
+        <div class="task-container-tasks-container"     >
+          <!-- task box -->
+          <div class="only-tasks-container">
+          {%if doing_tasks %}
+          
+          {% for task in doing_tasks %}
+          <div
+          class="task__box task_doing"
+          id="{{task.id}}"
+          draggable="true"
+          ondragstart="dragstart_handler(event)"
+        >
+        <input class="task__name"  value="{{task.task_content}}" type="text">
+          <button class='update-input-btn task-btn' ><span><span>&#10003;</span></span></button>
+          <button class="task-delete-btn task-btn">&#10005</button>
+        </div>
+          {%endfor%}
+          
+          {%endif%}
+        </div>
+  
+          <!-- Input to add new task -->
+            <!-- Input to add new task -->
+            <div class='add-container task_doing task__box'>
+            
+              <input
+              type="text"
+              class="add-input task_doing"
+              id="doing"
+              placeholder="Add..."
+            />
+    
+            <button class='add-input-btn task-btn' id='add_doing_btn'><span><span>&#10003;</span></span></button>
+    
+            </div>
+        </div>
+      </div>
+      <!-- DONE container -->
+      <div
+        class="task-container task-container-done"
+        ondrop="drop_handler(event)"
+        ondragover="dragover_handler(event)"
+      >
+        <h2 class="task-container-header">Done</h2>
+  
+        <div class="task-container-tasks-container">
+          <!-- task box -->
+          <div class="only-tasks-container">
+          {%if done_tasks%}
+  
+          {%for task in done_tasks%}
+          <div
+          class="task__box task_done"
+          id="{{task.id}}"
+          draggable="true"
+          ondragstart="dragstart_handler(event)"
+        >
+
+          <input class="task__name"  value="{{task.task_content}}" type="text">
+          <button class='update-input-btn task-btn' ><span><span>&#10003;</span></span></button>
+          <button class="task-delete-btn task-btn">&#10005;</button>
+        </div>
+          {%endfor%}
+          {%endif%}
+        </div>
+          <!-- Input to add new task -->
+           <!-- Input to add new task -->
+           <div class='add-container task_done task__box'>
+            
+            <input
+            type="text"
+            class="add-input task_done"
+            id="done"
+            placeholder="Add..."
+          />
+  
+          <button class='add-input-btn task-btn' id='add_done_btn'><span><span>&#10003;</span></span></button>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+   
+  </main>
+
+
+{%endif%}
+</div>
+
+</div>
+
+{%endblock content%}
+
+{%block code %}
+<script src="{{url_for('home_js')}}"></script>
+<script src="{{url_for('home_drag_js')}}" ></script>
+{%endblock code%}

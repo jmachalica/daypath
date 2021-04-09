@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{%block head%}
+<link rel='stylesheet' href="{{url_for('static',filename='forms.css')}}"/>
+{%endblock head%}
+
+{%block content%}
+
+<main>
+    <form method="POST" enctype="multipart/form-data" action="">
+{{form.hidden_tag()}}
+<h2>Join Us Today</h2>
+<div class='div-line'> </div>
+<div class='form-inputs-container'>
+
+        <div class="form-input-container">
+          {{ form.username.label() }}
+          {% if form.username.errors%}
+          {{form.username(class='form-invalid')}}
+          <div class='invalid-feedback'>
+          {%for error in form.username.errors%}
+          <span> {{error}} </span>
+
+          {%endfor%}
+        </div>
+          {%else%}
+          {{form.username(class='form-input')}}
+          {%endif%}
+
+
+        </div>
+
+        <div class="form-input-container">
+
+          {{ form.email.label() }}
+          {% if form.email.errors%}
+          {{form.email(class='form-invalid')}}
+          <div class='invalid-feedback'>
+          {%for error in form.email.errors%}
+          <span> {{error}} </span>
+
+          {%endfor%}
+        </div>
+          {%else%}
+          {{form.email(class='form-input')}}
+          {%endif%}
+        </div>
+
+
+        <div class="form-input-container">
+
+          {{ form.password.label() }}
+          {% if form.username.errors%}
+          {{form.password(class='form-invalid')}}
+          <div class='invalid-feedback'>
+          {%for error in form.password.errors%}
+          <span> {{error}} </span>
+
+          {%endfor%}
+        </div>
+          {%else%}
+          {{form.password(class='form-input')}}
+          {%endif%}
+        </div>
+
+        <div class="form-input-container">
+          {{ form.confirm_password.label() }}
+          {% if form.confirm_password.errors%}
+          {{form.confirm_password(class='form-invalid')}}
+          <div class='invalid-feedback'>
+          {%for error in form.confirm_password.errors%}
+          <span> {{error}} </span>
+
+          {%endfor%}
+        </div>
+          {%else%}
+          {{form.confirm_password(class='form-input')}}
+          {%endif%}
+        </div>
+
+        <div class="form-input-container">
+
+                {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+
+
+</div>
+    </form>
+</main>
+
+
+{%endblock content%}

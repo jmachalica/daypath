@@ -1,0 +1,118 @@
+{%extends "layout.html" %}
+{%block head%}
+<link rel='stylesheet' href="{{url_for('static',filename='timer.css')}}"/>
+{%endblock head%}
+
+{%block content%}
+      <main class="main-container" style="align-items: center;">
+        <div class="timer-container">
+          <div class="timer-options">
+            <a href="#" class="timer-option-link" id='pomodoro-btn'><span>Pomodoro</span></a>
+            <a href="#" class="timer-option-link" id='short_break-btn'><span>Short Break</span></a>
+            <a href="#" class="timer-option-link"id='long_break-btn'><span>Long Break</span></a>
+            <a href="#" class='timer-option-link ' 
+            id='settings'
+            ><span>Settings</span></a>
+          </div>
+
+          <div class='timer' id='timer'></div>
+       
+
+          <button class="timer-button-start btn" id='start'>Start</button>
+        </div>
+
+
+
+        <!-- MODAL -->
+<!-- //////////////////////////////////////////////////////////////// -->
+
+        <div id="settings-modal" class="modal">
+
+          <!-- Modal content -->
+       
+          <div class="settings-modal-content">
+
+            <div class="close">&times;</div>
+
+            <form method='POST' enctype='multipart-form-data' action="{{url_for('pomotimer')}}" class='form-settings'>
+            
+            {{form.hidden_tag()}}
+      
+            <div class="form-input-container">
+
+              {{form.work_time.label()}}
+
+              {%if form.work_time.errors%}
+
+                  {{form.work_time(class='form-invalid')}}
+                  <div class='invalid-feedback'>
+                    {%for error in form.work_time.errors%}
+
+                    <span>{{error}}</span>
+                    {%endfor%}
+                  </div>
+
+              {%else%}
+              {{form.work_time(class='form-input')}}
+              {%endif%}
+
+            </div>
+
+            <div class="form-input-container">
+
+              {{form.short_break.label()}}
+
+              {%if form.short_break.errors%}
+
+                  {{form.short_break(class='form-invalid')}}
+                  <div class='invalid-feedback'>
+                    {%for error in form.short_break.errors%}
+
+                    <span>{{error}}</span>
+                    {%endfor%}
+                  </div>
+
+              {%else%}
+              {{form.short_break(class='form-input')}}
+              {%endif%}
+
+            </div>
+            <div class="form-input-container">
+
+              {{form.long_break.label()}}
+
+              {%if form.long_break.errors%}
+
+                  {{form.long_break(class='form-invalid')}}
+                  <div class='invalid-feedback'>
+                    {%for error in form.long_break.errors%}
+
+                    <span>{{error}}</span>
+                    {%endfor%}
+                  </div>
+
+              {%else%}
+              {{form.long_break(class='form-input')}}
+              {%endif%}
+
+            </div>
+            
+            <div class="form-input-container btn-container">
+
+              {{ form.submit(class="btn btn-outline-info") }}
+      </div>
+            
+            </form>
+          </div>
+        
+        </div>
+
+      </main>
+
+  
+{%endblock content%}
+
+
+{% block code%}
+<script src="{{url_for('pomotimer_js')}}"></script>
+{%endblock code%}
