@@ -1,0 +1,66 @@
+
+{% extends "layout.html" %}
+
+{%block head%}
+<link rel='stylesheet' href="{{url_for('static',filename='forms.css')}}"/>
+{%endblock head%}
+
+{%block content%}
+
+<main>
+  <div class='main-content'>
+
+    <form method="post" enctype="multipart/form-data" action="{{url_for('login')}}">
+      {{form.hidden_tag()}}
+      <h2>Log in</h2>
+      <div class='div-line'> </div>
+      <div class='form-inputs-container'>
+      
+              <div class="form-input-container">
+                {{ form.username.label() }}
+                {% if form.username.errors%}
+                {{form.username(class='form-invalid')}}
+                <div class='invalid-feedback'>
+                {%for error in form.username.errors%}
+                <span> {{error}} </span>
+      
+                {%endfor%}
+              </div>
+                {%else%}
+                {{form.username(class='form-input')}}
+                {%endif%}
+      
+      
+              </div>
+      
+              <div class="form-input-container">
+      
+                {{ form.password.label() }}
+                {% if form.username.errors%}
+                {{form.password(class='form-invalid')}}
+                <div class='invalid-feedback'>
+                {%for error in form.password.errors%}
+                <span> {{error}} </span>
+      
+                {%endfor%}
+              </div>
+                {%else%}
+                {{form.password(class='form-input')}}
+                {%endif%}
+              </div>
+      
+      
+              <div class="form-input-container">
+      
+                      {{ form.submit(class="btn btn-outline-info") }}
+              </div>
+      
+      
+      </div>
+    </form>
+  </div>
+    
+</main>
+
+
+{%endblock content%}
